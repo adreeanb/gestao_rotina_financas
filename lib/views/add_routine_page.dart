@@ -68,7 +68,7 @@ class _AddRoutinePageState extends State<AddRoutinePage> {
 
       final viewModel = Provider.of<RoutineViewModel>(context, listen: false);
 
-      if (viewModel.hasTimeConflict(inicioMinutos, fimMinutos)) {
+      if (viewModel.hasTimeConflict(inicioMinutos, fimMinutos, _dataSelecionada)) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Conflito de horário! Já tem uma rotina neste período.'),

@@ -44,15 +44,20 @@ class RoutineViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool hasTimeConflict(int newStart, int newEnd) {
+  bool hasTimeConflict(int newStart, int newEnd, DateTime data) {
+    // 1. Convertemos o DateTime recebido para o mesmo formato String do banco
+    final dataString = "${data.year}-${data.month.toString().padLeft(2, '0')}-${data.day.toString().padLeft(2, '0')}";
+
     for (var routine in _routines) {
-      // A fórmula de interseção de tempo:
-      // Há conflito SE (Novo Início < Fim Existente) E (Novo Fim > Início Existente)
-      if (newStart < routine.fimMinutos && newEnd > routine.inicioMinutos) {
+      // 2. Usamos 'dataString' e comparamos com 'routine.data'
+      // O conflito só existe se for NO MESMO DIA e OS HORÁRIOS SE SOBREPUJEREM
+      if (dataString == routine.data &&
+          newStart < routine.fimMinutos &&
+          newEnd > routine.inicioMinutos) {
         return true; // Existe um choque de horários!
       }
     }
-    return false; // Caminho livre, pode agendar!
+    return false; // Caminho livre!
   }
 
   // Função para adicionar uma nova rotina (CRUD - Create)

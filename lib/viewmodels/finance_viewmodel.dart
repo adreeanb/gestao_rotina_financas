@@ -64,4 +64,12 @@ class FinanceViewModel extends ChangeNotifier {
     await db.delete('tb_transactions', where: 'id_transacao = ?', whereArgs: [id]);
     await loadTransactions();
   }
+
+  double get totalReceitas => _transactions
+      .where((t) => t.tipo == 'receita')
+      .fold(0.0, (soma, t) => soma + t.valor);
+
+  double get totalDespesas => _transactions
+      .where((t) => t.tipo == 'despesa')
+      .fold(0.0, (soma, t) => soma + t.valor);
 }

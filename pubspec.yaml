@@ -36,10 +36,12 @@ dependencies:
   sqflite: ^2.3.0
   path_provider: ^2.1.1
   # Opcional, mas útil para formatação de datas e moedas
-  intl: ^0.18.1
+  intl: ^0.19.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  fl_chart: ^0.70.2
+  table_calendar: ^3.1.2
 
 dev_dependencies:
   flutter_test:

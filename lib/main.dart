@@ -37,12 +37,12 @@ class MeuAppRotina extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
+          seedColor: Colors.teal,
           brightness: Brightness.light,
         ),
         useMaterial3: true,
       ),
-      // Mudámos a página inicial para a nossa HomePage
+      // MudAmos a página inicial para a nossa HomePage
       home: const MainScreen(),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Importações dos nossos ficheiros
+// Importações
 import 'package:gestao_rotina_financas/viewmodels/routine_viewmodel.dart';
 import 'package:gestao_rotina_financas/views/home_page.dart';
 import 'package:gestao_rotina_financas/views/main_screen.dart';
@@ -15,8 +15,6 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        // Registamos o RoutineViewModel aqui.
-        // A partir de agora, qualquer ecrã da app pode aceder às rotinas!
         ChangeNotifierProvider(create: (_) => RoutineViewModel()),
         ChangeNotifierProvider(create: (_) => HabitViewModel()),
         ChangeNotifierProvider(create: (_) => ProjectViewModel()),
@@ -42,7 +40,6 @@ class MeuAppRotina extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      // MudAmos a página inicial para a nossa HomePage
       home: const MainScreen(),
     );
   }

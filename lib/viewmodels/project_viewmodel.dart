@@ -12,7 +12,7 @@ class ProjectViewModel extends ChangeNotifier {
     loadProjects();
   }
 
-  // Lê os projetos do banco de dados
+  // Le os projetos do banco de dados
   Future<void> loadProjects() async {
     final db = await dbHelper.database;
     final maps = await db.query('tb_projects');
@@ -20,7 +20,7 @@ class ProjectViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Adiciona um novo projeto com uma meta de horas
+  // Adiciona um novo projeto
   Future<void> addProject(String nome, int metaHoras) async {
     final db = await dbHelper.database;
     final novoProjeto = Project(nome: nome, metaHorasSemana: metaHoras);

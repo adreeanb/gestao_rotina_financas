@@ -5,10 +5,8 @@ import '../viewmodels/routine_viewmodel.dart';
 class ManageCategoriesPage extends StatelessWidget {
   const ManageCategoriesPage({super.key});
 
-  // Função que abre um Pop-up para digitar a nova categoria
   void _mostrarDialogNovaCategoria(BuildContext context) {
     final nomeController = TextEditingController();
-    // Vamos usar algumas cores pré-definidas para simplificar o MVP
     String corSelecionada = '#4CAF50';
 
     showDialog(
@@ -64,7 +62,6 @@ class ManageCategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Fica escutando a lista de categorias do ViewModel
     final categorias = context.watch<RoutineViewModel>().categories;
 
     return Scaffold(

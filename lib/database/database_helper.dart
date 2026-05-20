@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseHelper {
-  // Padrão Singleton para garantir apenas uma instância da base de dados
+
   static final DatabaseHelper instance = DatabaseHelper._init();
   static Database? _database;
 
@@ -26,15 +26,14 @@ class DatabaseHelper {
     );
   }
 
-  // Ativar o suporte a chaves estrangeiras (Foreign Keys) no SQLite
+
   Future _onConfigure(Database db) async {
     await db.execute('PRAGMA foreign_keys = ON');
   }
 
-  // Criação das tabelas
+
   Future _createDB(Database db, int version) async {
 
-    // 1. Tabela de Categorias
     await db.execute('''
       CREATE TABLE tb_categories (
         id_categoria INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +42,6 @@ class DatabaseHelper {
       )
     ''');
 
-    // 2. Tabela de Projetos (Deve vir antes das rotinas devido à chave estrangeira)
     await db.execute('''
       CREATE TABLE tb_projects (
         id_projeto INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,8 +50,6 @@ class DatabaseHelper {
       )
     ''');
 
-    // 3. Tabela de Rotinas
-    // O SQLite não tem tipo booleano, usamos INTEGER (0 para falso, 1 para verdadeiro)
     await db.execute('''
       CREATE TABLE tb_routines (
         id_rotina INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,7 +66,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // 4. Tabela de Hábitos
+
     await db.execute('''
       CREATE TABLE tb_habits (
         id_habito INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -79,7 +75,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // 5. Tabela de Registos de Hábitos (Log diário)
+
     await db.execute('''
       CREATE TABLE tb_habit_logs (
         id_log INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -89,7 +85,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // 6. Tabela de Metas Financeiras
+
     await db.execute('''
       CREATE TABLE tb_financial_goals (
         id_meta INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -99,7 +95,6 @@ class DatabaseHelper {
       )
     ''');
 
-    // 7. Tabela de Transações (Entradas e Saídas)
     await db.execute('''
       CREATE TABLE tb_transactions (
         id_transacao INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -111,7 +106,6 @@ class DatabaseHelper {
     ''');
   }
 
-  // Método para fechar a base de dados
   Future close() async {
     final db = await instance.database;
     db.close();

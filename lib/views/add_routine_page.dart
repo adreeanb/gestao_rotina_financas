@@ -14,7 +14,7 @@ class _AddRoutinePageState extends State<AddRoutinePage> {
   final _formKey = GlobalKey<FormState>();
   final _tituloController = TextEditingController();
 
-  int? _categoriaSelecionada; // Guarda o ID da categoria escolhida
+  int? _categoriaSelecionada;
 
   DateTime _dataSelecionada = DateTime.now();
   TimeOfDay _horaInicio = const TimeOfDay(hour: 8, minute: 0);
@@ -125,7 +125,6 @@ class _AddRoutinePageState extends State<AddRoutinePage> {
               ),
               const SizedBox(height: 16),
 
-              // --- NOVO: Campo de Categoria ---
               DropdownButtonFormField<int>(
                 value: _categoriaSelecionada,
                 decoration: const InputDecoration(

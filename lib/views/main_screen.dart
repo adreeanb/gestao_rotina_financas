@@ -28,14 +28,11 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // O corpo do Scaffold será o ecrã correspondente ao índice atual
       body: _ecras[_indiceAtual],
 
-      // A nossa Barra de Navegação Inferior
       bottomNavigationBar: NavigationBar(
         selectedIndex: _indiceAtual,
         onDestinationSelected: (int index) {
-          // Quando o utilizador clica num ícone, atualizamos o estado
           setState(() {
             _indiceAtual = index;
           });

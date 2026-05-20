@@ -110,7 +110,7 @@ class HabitsPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      // Indicador de Streak (Ofensiva)
+                      // Indicador de Streak
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(

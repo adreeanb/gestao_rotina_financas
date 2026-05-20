@@ -36,7 +36,6 @@ class _HomePageState extends State<HomePage> {
     final viewModel = context.watch<RoutineViewModel>();
     final colorScheme = Theme.of(context).colorScheme;
 
-    // 1. Filtrar as rotinas para o dia selecionado
     final dataSelecionadaStr = "${_selectedDay!.year}-${_selectedDay!.month.toString().padLeft(2, '0')}-${_selectedDay!.day.toString().padLeft(2, '0')}";
 
     final rotinasFiltradas = viewModel.routines.where((r) => r.data == dataSelecionadaStr).toList();
@@ -79,7 +78,6 @@ class _HomePageState extends State<HomePage> {
                   _calendarFormat = format;
                 });
               },
-              // Estilização das cores baseada no seu tema Ciano/Verde
               calendarStyle: CalendarStyle(
                 selectedDecoration: BoxDecoration(color: colorScheme.primary, shape: BoxShape.circle),
                 todayDecoration: BoxDecoration(color: colorScheme.primary.withOpacity(0.4), shape: BoxShape.circle),
@@ -89,7 +87,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          // LISTA DE ROTINAS FILTRADAS
           Expanded(
             child: rotinasFiltradas.isEmpty
                 ? _buildEmptyState()
